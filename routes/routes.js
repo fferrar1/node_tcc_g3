@@ -1,4 +1,4 @@
-const db = require('../database/connection');
+const db = require('../database/conection');
 const express = require('express');
 const router = express.Router();
 
@@ -11,7 +11,7 @@ const PedidosController = require('../controllers/pedidosController');
 const ProdutosController = require('../controllers/produtosController');
 const PubliadocaoController = require('../controllers/publiadocaoController');
 const PublicacaoController = require('../controllers/publicacaoController');
-
+const PetshopController = require('../controllers/petshopController');
 
 
 //definição de rotas

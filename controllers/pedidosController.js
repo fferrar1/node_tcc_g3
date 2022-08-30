@@ -1,5 +1,5 @@
 const { json } = require("express");
-const db = require("../database/connection");
+const db = require("../database/conection");
 
 module.exports = {
     async listarPedidos(request, response) {
