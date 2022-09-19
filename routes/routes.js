@@ -37,7 +37,7 @@ router.get('/contatoadocao', ContatoadocaoController.listarContatoadocao);
 //excluir
 
 router.get('/pedidos', PedidosController.listarPedidos);
-//cadastrar
+router.post('/pedidos', PedidosController.create);
 //editar
 //excluir
 
