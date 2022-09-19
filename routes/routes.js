@@ -17,7 +17,7 @@ const PetshopController = require('../controllers/petshopController');
 //definição de rotas
 
 router.get('/chatclientepetshop', ChatclientepetshopController.listarChatclientepetshop);
-//cadastrar
+router.post('/chatclientepetshop', ChatclientepetshopController.create);
 //editar
 //excluir
 
@@ -42,7 +42,7 @@ router.get('/pedidos', PedidosController.listarPedidos);
 //excluir
 
 router.get('/petshop', PetshopController.listarPetshop);
-//cadastrar
+router.post('/petshop', PetshopController.create);
 //editar
 //excluir
 
