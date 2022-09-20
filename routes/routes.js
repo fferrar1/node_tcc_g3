@@ -47,7 +47,7 @@ router.get('/petshop', PetshopController.listarPetshop);
 //excluir
 
 router.get('/produtos', ProdutosController.listarProdutos);
-router.get('/produtos', ProdutosController.create);
+router.post('/produtos', ProdutosController.create);
 //editar
 //excluir
 

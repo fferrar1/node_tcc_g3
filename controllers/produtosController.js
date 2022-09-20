@@ -15,8 +15,8 @@ module.exports = {
     },
 async create(request, response) {
     try {
-    const {pet_id, prod_nome, prod_cod_barras, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img} = request.body;  
-    const sql = 'INSERT INTO cliente (pet_id, prod_nome, prod_cod_barras, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'; 
+    const { pet_id, prod_nome, prod_cod_barras, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img } = request.body;  
+    const sql = 'INSERT INTO produtos (pet_id, prod_nome, prod_cod_barras, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'; 
     const values = [pet_id, prod_nome, prod_cod_barras, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img];     
     const confirmacao = await db.query(sql, values);
     const prod_id = confirmacao[0].insertId; 
