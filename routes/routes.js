@@ -26,8 +26,8 @@ router.get('/cliente', ClienteController.listarCliente);
 //editar
 //excluir
 
-router.post('/compra', CompraController.listarCompra);
-
+router.get('/compra', CompraController.listarCompra);
+router.post('/compra', CompraController.create);
 //editar
 //excluir
 
@@ -51,7 +51,8 @@ router.get('/produtos', ProdutosController.listarProdutos);
 //editar
 //excluir
 
-router.post('/publiadocao', PubliadocaoController.listarPubliadocao);
+router.get('/publiadocao', PubliadocaoController.listarPubliadocao);
+router.post('/publiadocao', PubliadocaoController.create);
 //editar
 //excluir
 
