@@ -18,7 +18,7 @@ async create(request, response) {
     try {
             
         const { publi_name, pet_id, publi_desc, publi_conteudo, publi_status } = request.body;  
-        const sql = 'INSERT INTO publicacao (publi_id, publi_name, pet_id, publi_desc, publi_conteudo, publi_status) VALUES ("PROMOÇÂO", 1, "Promocao do dia", "promoção.jpeg", 1)';      
+        const sql = 'INSERT INTO publicacao (publi_name, pet_id, publi_desc, publi_conteudo, publi_status) VALUES (?, ?, ?, ?, ?)';      
         const values = [publi_name, pet_id, publi_desc, publi_conteudo, publi_status];                 
         const confirmacao = await db.query(sql, values);           
         const publi_id = confirmacao[0].insertId;           

@@ -32,7 +32,7 @@ router.get('/compra', CompraController.listarCompra);
 //excluir
 
 router.get('/contatoadocao', ContatoadocaoController.listarContatoadocao);
-//cadastrar
+router.post('/contatoadocao', ContatoadocaoController.create);
 //editar
 //excluir
 
@@ -57,7 +57,7 @@ router.get('/publiadocao', PubliadocaoController.listarPubliadocao);
 //excluir
 
 router.get('/publicacao', PublicacaoController.listarPublicacao);
-//cadastrar
+router.post('/publicacao', PublicacaoController.create);
 //editar
 //excluir
 
