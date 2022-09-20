@@ -22,7 +22,7 @@ router.get('/chatclientepetshop', ChatclientepetshopController.listarChatcliente
 //excluir
 
 router.get('/cliente', ClienteController.listarCliente);
-//cadastrar
+router.post('/cliente', ClienteController.create);
 //editar
 //excluir
 
@@ -47,7 +47,7 @@ router.get('/petshop', PetshopController.listarPetshop);
 //excluir
 
 router.get('/produtos', ProdutosController.listarProdutos);
-//cadastrar
+router.get('/produtos', ProdutosController.create);
 //editar
 //excluir
 
