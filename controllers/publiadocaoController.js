@@ -29,5 +29,5 @@ module.exports = {
         } catch (error) { 
             return response.status(500).json({confirma: 'Erro', message: error});
         }   
-    }, 
+    },
 };
