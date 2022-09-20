@@ -16,7 +16,7 @@ module.exports = {
 async create(request, response) {
     try {
             
-        const { cliente_id, chat_data, chat_msg } = request.body;  
+        const { cliente_id, chat_data, chat_msg, chat_vizua, pet_id } = request.body;  
         const sql = 'INSERT INTO chat_cliente_petshop (cliente_id, chat_data, chat_msg, chat_vizua, pet_id) VALUES (?, ?, ?, ?, ?)'; 
         const values = [cliente_id, chat_data, chat_msg, chat_vizua, pet_id]; 
         const confirmacao = await db.query(sql, values);
