@@ -27,4 +27,22 @@ async create(request, response) {
         return response.status(500).json({confirma: 'Erro', message: error});
     }   
 },
-};
+async update(request, response) {
+    try{
+        const {  publi_name, pet_id, publi_desc, publi_conteudo, publi_status } = request.body;
+
+        const {publi_id  } = request.params;
+
+        const sql = 'UPDATE publicacao SET publi_name = ?, pet_id = ?, publi_desc = ?, publi_conteudo = ?, publi_status = ? where publi_id = ? ;';
+
+        const values = [ publi_name, pet_id, publi_desc, publi_conteudo, publi_status];
+
+        const atualizacao = await db.query(sql, values);
+
+        return response.status(200).json({confirma: 'Sucesso', message: 'Dados Atualizados'});
+    }
+    catch (error) {
+        return response.status(500).json({confirma: 'Erro', message: 'Error'});
+    }
+   }
+  };
