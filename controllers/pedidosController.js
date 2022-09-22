@@ -31,4 +31,22 @@ module.exports = {
             return response.status(500).json({confirma: 'Erro', message: error});
         }   
     }, 
+    async update(request,response) {
+        try {
+             //parâmetros passados via corpo da requisição
+             const {compra_id, prod_id, pedido_quant, pedido_valor_produto } = request.body;  
+                //parâmetros passado via url na chamada api pello front-end
+            const {pedido_id} = request. params;
+               // instrução sal para atualização
+            const sql = 'UPDATE pedidos SET compra_id = ?, prod_id=?, pedido_quant = ?, pedido_valor_produto = ? WHERE pedido_id = ?;';
+               // definicão de array com os parâmetros que receberam os valores do front-end
+             const values = [compra_id, prod_id, pedido_quant, pedido_valor_produto, pedido_id];
+              // executa a instrução de atualização no banco de dados
+            const atualizacao = await db.query (sql, values);
+              // Mensagem de retorno no formato JsON
+            return response.status (200).json({confirma:'Sucesso', message: 'Dados atualizados'});
+        } catch (error) {
+            return response.status(500).json({confirma: 'Erro', message:error });
+        }
+    },
 };
