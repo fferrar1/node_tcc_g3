@@ -27,4 +27,19 @@ async create(request, response) {
         return response.status(500).json({confirma: 'Erro', message: error});
     }   
 },
+
+async update(request, response) {
+    try {
+            
+        const { cliente_id, chat_data, chat_msg, chat_vizua, pet_id } = request.body; 
+        const { chat_id } = request.params;
+        const sql = 'UPDATE chat_cliente_petshop SET cliente_id = ?, chat_data = ?, chat_msg = ?, chat_vizua = ?, pet_id = ? WHERE chat_id = ?;'; 
+        const values = [cliente_id, chat_data, chat_msg, chat_vizua, pet_id]; 
+        const atualizacao = await db.query(sql, values);
+            
+        return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});
+    } catch (error) { 
+        return response.status(500).json({confirma: 'Erro', message: error});
+      } 
+   },
 };

@@ -27,4 +27,19 @@ module.exports = {
             return response.status(500).json({confirma: 'Erro', message: error});
         }   
     },
+
+    async update(request, response) {
+        try {
+                
+            const { pet_nome, pet_email, pet_tel_contato, pet_endereco, pet_cidade, pet_estado, pet_senha, pet_logo } = request.body; 
+            const { pet_id } = request.params;
+            const sql = 'UPDATE petshop SET pet_nome = ?, pet_email = ?, pet_tel_contato = ?, pet_endereco = ?, pet_cidade = ?, pet_estado = ?, pet_senha = ?, pet_logo = ? WHERE pet_id = ?;'; 
+            const values = [pet_nome, pet_email, pet_tel_contato, pet_endereco, pet_cidade, pet_estado, pet_senha, pet_logo];  
+            const atualizacao = await db.query(sql, values);
+                
+            return response.status(200).json({confirma: 'Sucesso', message: 'Dados atualizados'});
+        } catch (error) { 
+            return response.status(500).json({confirma: 'Erro', message: error});
+          } 
+       },
     };
