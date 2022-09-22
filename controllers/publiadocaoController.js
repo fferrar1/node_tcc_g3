@@ -30,4 +30,22 @@ module.exports = {
             return response.status(500).json({confirma: 'Erro', message: error});
         }   
     },
-};
+async update(request, response) {
+    try {
+            // parâmtros passados via corpo da requisição
+        const { adc_porte, adc_raca, adc_idade, adc_sexo, adc_desc, adc_foto, cliente_id, adc_status } = request.body;  
+            // instrução sql para inserção
+        const { adc_id } = request.params;
+            //instrução sql para atualização
+        const sql = 'UPDATE PUBLI_ADOCAO SET adc_porte = ?, adc_raca = ?, adc_idade = ?, adc_sexo = ?, adc_desc =?, adc_foto= ?, cliente_id =?, adc_status =? WHERE adc_id = ?;';
+            // definição de array com os parâmetros que receberam os valores do front-end
+        const values = [ adc_porte, adc_raca, adc_idade, adc_sexo, adc_desc, adc_foto, cliente_id, adc_status, adc_id]; 
+            // executa a instrução de inserção no banco de dados       
+        const atualizacao = await db.query(sql, values);
+            // Mensagem de retorno no formato JSON
+        return response.status(200).json({confirma: 'Sucesso', message: 'Dados Atualizados'});
+    } catch (error) { 
+        return response.status(500).json({confirma: 'Erro', message: error});
+    }   
+  },
+}

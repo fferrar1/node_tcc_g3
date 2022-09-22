@@ -28,7 +28,7 @@ router.get('/cliente', ClienteController.listarCliente);
 
 router.get('/compra', CompraController.listarCompra);
 router.post('/compra', CompraController.create);
-//editar
+router.patch('/compra/:compra_id', CompraController.update);
 //excluir
 
 router.get('/contatoadocao', ContatoadocaoController.listarContatoadocao);
@@ -53,7 +53,7 @@ router.get('/produtos', ProdutosController.listarProdutos);
 
 router.get('/publiadocao', PubliadocaoController.listarPubliadocao);
 router.post('/publiadocao', PubliadocaoController.create);
-//editar
+router.patch('/publiadocao/:adc_id', PubliadocaoController.update);
 //excluir
 
 router.get('/publicacao', PublicacaoController.listarPublicacao);
