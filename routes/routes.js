@@ -18,8 +18,8 @@ const PetshopController = require('../controllers/petshopController');
 
 router.get('/chatclientepetshop', ChatclientepetshopController.listarChatclientepetshop);
 router.post('/chatclientepetshop', ChatclientepetshopController.create);
-//editar
-//excluir
+router.patch('/chatclientepetshop/:chat_id', ChatclientepetshopController.update);
+ router.delete('/chatclientepetshop/:chat_id', ChatclientepetshopController.delete);
 
 router.get('/cliente', ClienteController.listarCliente);
 //cadastrar
@@ -43,7 +43,7 @@ router.get('/pedidos', PedidosController.listarPedidos);
 
 router.get('/petshop', PetshopController.listarPetshop);
 router.post('/petshop', PetshopController.create);
-//editar
+router.patch('/petshop/:pet_id', PetshopController.update);
 //excluir
 
 router.get('/produtos', ProdutosController.listarProdutos);
