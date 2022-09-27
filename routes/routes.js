@@ -38,8 +38,8 @@ router.get('/contatoadocao', ContatoadocaoController.listarContatoadocao);
 
 router.get('/pedidos', PedidosController.listarPedidos);
 router.post('/pedidos', PedidosController.create);
-//editar
-//excluir
+router.patch('/pedidos/:pedido_id', PedidosController.update);
+router.delete('/pedidos/:pedido_id', PedidosController.delete);
 
 router.get('/petshop', PetshopController.listarPetshop);
 //cadastrar
