@@ -31,11 +31,11 @@ async update(request, response) {
     try{
         const {  publi_name, pet_id, publi_desc, publi_conteudo, publi_status } = request.body;
 
-        const {publi_id  } = request.params;
+        const { publi_id  } = request.params;
 
         const sql = 'UPDATE publicacao SET publi_name = ?, pet_id = ?, publi_desc = ?, publi_conteudo = ?, publi_status = ? where publi_id = ? ;';
 
-        const values = [ publi_name, pet_id, publi_desc, publi_conteudo, publi_status];
+        const values = [ publi_name, pet_id, publi_desc, publi_conteudo, publi_status, publi_id];
 
         const atualizacao = await db.query(sql, values);
 
@@ -44,5 +44,19 @@ async update(request, response) {
     catch (error) {
         return response.status(500).json({confirma: 'Erro', message: 'Error'});
     }
-   }
+   },
+   async delete(request, response) { 
+    try {
+            
+        const { publi_id } = request.params;
+        const sql = 'DELETE FROM publicacao WHERE publi_id = ?';   
+        const values = [publi_id];
+        await db.query(sql, values);    
+        return response.status(200).json({confirma: 'Sucesso', message:'publicacao id ' + publi_id + ' excluída com sucesso'}); 
+    } catch (error) {
+        return response.status(500).json({confirma: 'Erro', message: error});
+    }        
+},
   };
+
+

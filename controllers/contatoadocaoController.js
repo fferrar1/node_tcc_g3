@@ -44,6 +44,18 @@ async update(request, response) {
     catch (error) {
         return response.status(500).json({confirma: 'Erro', message: 'Error'});
     }
-   }
+   },
+
+   async delete(request, response) { 
+    try {
+        const { ctt_id } = request.params;
+        const sql = 'DELETE FROM contato_adocao WHERE ctt_id = ?'; 
+        const values = [ctt_id]; 
+        await db.query(sql, values);  
+        return response.status(200).json({confirma: 'Sucesso', message:'Contatoadocao com id ' + ctt_id + ' excluída com sucesso'}); 
+    } catch (error) {
+        return response.status(500).json({confirma: 'Erro', message: error});
+    }        
+},
   };
 

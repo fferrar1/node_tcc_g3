@@ -12,6 +12,7 @@ const ProdutosController = require('../controllers/produtosController');
 const PubliadocaoController = require('../controllers/publiadocaoController');
 const PublicacaoController = require('../controllers/publicacaoController');
 const PetshopController = require('../controllers/petshopController');
+const publiadocaoController = require('../controllers/publiadocaoController');
 
 
 //definição de rotas
@@ -33,6 +34,8 @@ router.get('/compra', CompraController.listarCompra);
 
 router.get('/contatoadocao', ContatoadocaoController.listarContatoadocao);
 router.post('/contatoadocao', ContatoadocaoController.create);
+router.patch('/contatoadocao/:ctt_id', ContatoadocaoController.update);
+router.delete('/contatoadocao/:ctt_id', ContatoadocaoController.delete);
 //editar
 //excluir
 
@@ -51,13 +54,15 @@ router.get('/produtos', ProdutosController.listarProdutos);
 //editar
 //excluir
 
-router.get('/publiadocao', PubliadocaoController.listarPubliadocao);
+router.get('/publiadocao', publiadocaoController.listarPubliadocao);
 //cadastrar
 //editar
 //excluir
 
 router.get('/publicacao', PublicacaoController.listarPublicacao);
 router.post('/publicacao', PublicacaoController.create);
+router.patch('/publicacao/:publi_id', PublicacaoController.update);
+router.delete('/publicacao/:publi_id', PublicacaoController.delete);
 //editar
 //excluir
 
