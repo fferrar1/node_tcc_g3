@@ -21,10 +21,15 @@ router.get('/chatclientepetshop', ChatclientepetshopController.listarChatcliente
 //editar
 //excluir
 
+
+//listar HUGO
 router.get('/cliente', ClienteController.listarCliente);
+//cadastrar
 router.post('/cliente', ClienteController.create);
 //editar
+router.patch('/cliente/:cliente_id', ClienteController.update);
 //excluir
+
 
 router.get('/compra', CompraController.listarCompra);
 //cadastrar
@@ -46,10 +51,15 @@ router.get('/petshop', PetshopController.listarPetshop);
 //editar
 //excluir
 
+
+//listar HUGO
 router.get('/produtos', ProdutosController.listarProdutos);
+//cadastrar
 router.post('/produtos', ProdutosController.create);
 //editar
+router.patch('/produtos/:prod_id', ProdutosController.update);
 //excluir
+
 
 router.get('/publiadocao', PubliadocaoController.listarPubliadocao);
 //cadastrar
