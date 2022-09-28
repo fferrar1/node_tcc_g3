@@ -45,9 +45,9 @@ async update(request, response) {
         return response.status(500).json({confirma: 'Erro', message: 'Error'});
     }
    },
+
    async delete(request, response) { 
-    try {
-            
+    try {    
         const { publi_id } = request.params;
         const sql = 'DELETE FROM publicacao WHERE publi_id = ?';   
         const values = [publi_id];
