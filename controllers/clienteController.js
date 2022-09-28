@@ -30,7 +30,7 @@ async create(request, response) {
 async update(request, response) {
     try {
     const { cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone } = request.body; 
-    const { cliente_id } = request.parms;
+    const { cliente_id } = request.params;
     const sql = 'UPDATE cliente SET cliente_email = ?, cliente_senha = ?, cliente_nome = ?, cliente_endereco = ?, cliente_telefone = ? WHERE cliente_id = ?;'; 
     const values = [cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone, cliente_id];     
     const atualizacao = await db.query(sql, values); 

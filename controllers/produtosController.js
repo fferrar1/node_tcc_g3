@@ -30,7 +30,7 @@ async create(request, response) {
 async update(request, response) {
     try {
     const { pet_id, prod_nome, prod_cod_barras, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img } = request.body; 
-    const { prod_id } = request.parms;
+    const { prod_id } = request.params;
     const sql = 'UPDATE produtos SET pet_id = ?, prod_nome = ?, prod_cod_barras = ?, prod_descricao = ?, prod_marca = ?, prod_valor = ?, prod_estoque = ?, prod_img = ? WHERE prod_id = ?;'; 
     const values = [pet_id, prod_nome, prod_cod_barras, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img, prod_id];     
     const atualizacao = await db.query(sql, values); 
