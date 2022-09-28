@@ -17,7 +17,7 @@ async listarCliente(request, response) {
 async create(request, response) {
     try {
     const { cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone } = request.body;  
-    const sql = 'INSERT INTO cliente (cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone) VALUES (?, ?, ?, ?, ?)'; 
+    const sql = 'INSERT INTO cliente (cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone) VALUES (?, ?, ?, ?, ?);'; 
     const values = [cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone];     
     const confirmacao = await db.query(sql, values);
     const cliente_id = confirmacao[0].insertId; 
@@ -31,7 +31,7 @@ async update(request, response) {
     try {
     const { cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone } = request.body; 
     const { cliente_id } = request.parms;
-    const sql = 'UPDATE cliente SET cliente_email = ?, cliente_senha = ?, cliente_nome = ?, cliente_endereco = ?, cliente_telefone = ? WHERE cliente_id = ?'; 
+    const sql = 'UPDATE cliente SET cliente_email = ?, cliente_senha = ?, cliente_nome = ?, cliente_endereco = ?, cliente_telefone = ? WHERE cliente_id = ?;'; 
     const values = [cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone, cliente_id];     
     const atualizacao = await db.query(sql, values); 
         return response.status(200).json({confirma: 'Sucesso', message: 'Dados Atualizados'});
