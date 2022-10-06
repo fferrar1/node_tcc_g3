@@ -6,7 +6,7 @@ const db = require("../database/conection");
 module.exports = {
     async listarPublicacao(request, response) {
         try{
-            const sql = 'select publi_id, publi_name, pet_id, publi_desc, publi_conteudo, publi_status from publicacao;';
+            const sql = 'SELECT pub.publi_id, pub.publi_name, pub.publi_desc, pub.publi_conteudo, pub.publi_status, pet.pet_nome, pet.pet_logo  FROM publicacao pub  INNER JOIN petshop pet ON pub.pet_id = pet.pet_id;';
             const publicacao = await db.query(sql);
     
             return response.status(200).json({confirma: 'Sucesso', nResults: publicacao[0].length, message: publicacao[0]});
@@ -57,6 +57,7 @@ async update(request, response) {
         return response.status(500).json({confirma: 'Erro', message: error});
     }        
 },
+
   };
 
 

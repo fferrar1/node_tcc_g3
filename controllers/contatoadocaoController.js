@@ -5,7 +5,7 @@ const db = require("../database/conection");
 
 module.exports = {
     async listarContatoadocao(request, response) {
-        try{const sql = 'SELECT ctt_id, adc_id, ctt_data, ctt_msg, ctt_vizua, cliente_id from contato_adocao;';
+        try{const sql = 'SELECT ctt.ctt_id, publi.adc_id, cli.cliente_nome, cli.cliente_telefone FROM contato_adocao ctt INNER JOIN publi_adocao publi ON publi.adc_id = ctt.adc_id INNER JOIN cliente cli ON ctt.cliente_id = cli.cliente_id;';
         const contato_adocao = await db.query(sql);
 
         return response.status(200).json({confirma: 'Sucesso', nResults: contato_adocao[0].length, message: contato_adocao[0]});
