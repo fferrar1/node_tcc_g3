@@ -5,7 +5,7 @@ const db = require("../database/conection");
 module.exports = {
     async listarCompra(request, response) {
         try{
-            const sql = 'SELECT compra_id, pet_id,cliente_id,endereco,forma_pgto,compra_status from compra;';
+            const sql = 'SELECT cp.compra_id, cp.pet_id, cp.cliente_id, cln.cliente_nome, cln.cliente_telefone, cp.endereco, cp.forma_pgto, cp.compra_status, pt.pet_nome, pt.pet_logo, pt.pet_tel_contato, pt.pet_endereco from compra cp inner join cliente cln on cp.cliente_id = cln.cliente_id inner join petshop pt on cp.pet_id = pt.pet_id;';
             const compra = await db.query(sql)
             return response.status(200).json({confirma: 'Sucesso', nResults: compra[0].lenght, message: compra[0]});
         } catch (error) {
