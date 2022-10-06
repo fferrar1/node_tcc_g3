@@ -5,7 +5,8 @@ const db = require("../database/conection");
 module.exports = {
     async listarChatclientepetshop(request, response) {
         try{
-           const sql = 'select chat_id, cliente_id, chat_data, chat_msg from chat_cliente_petshop;';
+           const sql = 'select chp.chat_id, chp.cliente_id, cli.cliente_nome, cli.cliente_telefone, chp.chat_data, chp.chat_msg, chp.chat_vizua, chp.pet_id, pt.pet_nome, pt.pet_tel_contato, pt.pet_logo from chat_cliente_petshop chp inner join cliente cli on chp.cliente_id = cli.cliente_id inner join petshop pt on chp.pet_id = pt.pet_id;';
+           
            const chat_cliente_petshop = await db.query(sql);
             return response.status(200).json({confirma: 'Sucesso', nResults: chat_cliente_petshop[0].length, message: chat_cliente_petshop[0]});
         } catch (error) {
