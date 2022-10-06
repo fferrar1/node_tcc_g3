@@ -6,8 +6,16 @@ const db = require("../database/conection");
 module.exports = {
 async listarProdutos(request, response) {
     try{
-    const sql = 'SELECT prod_id, pet_id, prod_cod_barras, prod_nome, prod_descricao, prod_marca, prod_valor, prod_estoque, prod_img FROM produtos;';
-    const produtos = await db.query(sql);
+        const {prod_nome = '%%'} = request.body;
+        const {prod_marca = '%%'} = request.body;
+        const {prod_descricao = '%%'} = request.body;
+
+        const {page = 1, limit = 5} = request.query;
+        const inicio = (page -1) * limit;
+
+    const sql = 'SELECT pdt.prod_id, pdt.pet_id, pet.pet_nome, pdt.prod_cod_barras, pdt.prod_nome, pdt.prod_descricao, pdt.prod_marca, pdt.prod_valor, pdt.prod_estoque, pdt.prod_img FROM produtos pdt INNER JOIN petshop pet ON pdt.pet_id = pet.pet_id WHERE pdt.prod_nome LIKE ? AND pdt.prod_marca LIKE ? AND pdt.prod_descricao LIKE ? LIMIT ?, ?;';
+    const values = [prod_nome, prod_descricao, prod_marca, inicio, parseInt(limit)];
+    const produtos = await db.query(sql, values);
         return response.status(200).json({confirma: 'Sucesso', nResults: produtos[0].lenght, message: produtos[0]});
     } catch (error) {
         return response.status(500).json({confirma : 'Erro', message: error});
