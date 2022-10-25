@@ -24,6 +24,8 @@ router.get('/chatclientepetshop', ChatclientepetshopController.listarChatcliente
 
 //listar HUGO
 router.get('/cliente', ClienteController.listarCliente);
+//Login
+router.get('/cliente/login', ClienteController.login);
 //cadastrar
 router.post('/cliente', ClienteController.create);
 //editar
@@ -51,7 +53,6 @@ router.get('/petshop', PetshopController.listarPetshop);
 //editar
 //excluir
 
-
 //listar HUGO
 router.get('/produtos', ProdutosController.listarProdutos);
 //cadastrar
@@ -59,7 +60,6 @@ router.post('/produtos', ProdutosController.create);
 //editar
 router.patch('/produtos/:prod_id', ProdutosController.update);
 //excluir
-
 
 router.get('/publiadocao', PubliadocaoController.listarPubliadocao);
 //cadastrar

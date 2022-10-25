@@ -14,6 +14,18 @@ async listarCliente(request, response) {
     }
 },
 
+async login(request, response) {
+    const { cliente_email, cliente_senha } = request.body;
+    try { 
+    const sql = 'SELECT cliente_id, cliente_email, cliente_nome, cliente_endereco, cliente_telefone FROM  cliente WHERE cliente_email = ? AND  cliente_senha = ?;'; 
+    const values = [cliente_email, cliente_senha];     
+    const clientes = await db.query(sql, values);
+        return response.status(200).json({confirma: 'Sucesso', nResults: clientes[0].length, message: clientes[0]});
+    } catch (error) { 
+        return response.status(500).json({confirma: 'Erro', message: error});
+    } 
+},
+
 async create(request, response) {
     try {
     const { cliente_email, cliente_senha, cliente_nome, cliente_endereco, cliente_telefone } = request.body;  
