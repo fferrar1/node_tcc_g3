@@ -42,6 +42,7 @@ router.get('/pedidos', PedidosController.listarPedidos);
 //excluir
 
 router.get('/petshop', PetshopController.listarPetshop);
+router.get('/petshop/login', PetshopController.login);
 router.post('/petshop', PetshopController.create);
 router.patch('/petshop/:pet_id', PetshopController.update);
 //excluir
