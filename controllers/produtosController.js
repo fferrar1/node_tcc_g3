@@ -13,6 +13,10 @@ async listarProdutos(request, response) {
         const {page = 1, limit = 5} = request.query;
         const inicio = (page -1) * limit;
 
+        const nome_produto = prod_nome === '%%' ? '%%' : '%' + prod_nome + '%';
+        const marca_produto = prod_marca === '%%' ? '%%' : '%' + prod_marca + '%';
+        const desc_produto = prod_descricao === '%%' ? '%%' : '%' + prod_descricao + '%';
+
     const sql = 'SELECT pdt.prod_id, pdt.pet_id, pet.pet_nome, pdt.prod_cod_barras, pdt.prod_nome, pdt.prod_descricao, pdt.prod_marca, pdt.prod_valor, pdt.prod_estoque, pdt.prod_img FROM produtos pdt INNER JOIN petshop pet ON pdt.pet_id = pet.pet_id WHERE pdt.prod_nome LIKE ? AND pdt.prod_marca LIKE ? AND pdt.prod_descricao LIKE ? LIMIT ?, ?;';
     const values = [prod_nome, prod_descricao, prod_marca, inicio, parseInt(limit)];
     const produtos = await db.query(sql, values);
